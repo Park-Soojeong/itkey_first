@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<title>ITKey 게시판</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="icon" type="image/png" href="images/icons/favicon.ico" />
+	<link rel="stylesheet" type="text/css" href="css/bootstrap.origin.min.css">
+	<link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+	<link rel="stylesheet" type="text/css" href="fonts/iconic/css/material-design-iconic-font.min.css">
+	<link rel="stylesheet" type="text/css" href="vendor/css-hamburgers/hamburgers.min.css">
+	<link rel="stylesheet" type="text/css" href="vendor/animsition/css/animsition.min.css">
+	<link rel="stylesheet" type="text/css" href="vendor/select2/select2.min.css">
+	<link rel="stylesheet" type="text/css" href="vendor/daterangepicker/daterangepicker.css">
+	<link rel="stylesheet" type="text/css" href="css/util.css">
+	<link rel="stylesheet" type="text/css" href="css/main.css">
+	<link rel="stylesheet" type="text/css" href="css/table.css">
+	<link rel="stylesheet" type="text/css" href="css/chat.css">
+	<link rel="stylesheet" type="text/css" href="css/ajax.main.css">
+	<link rel="stylesheet" type="text/css" href="vendor/fontawesome-free-5.8.2-web/css/all.min.css">
+
+	<script src="vendor/jquery/jquery-3.2.1.min.js"></script>
+	<script src="vendor/animsition/js/animsition.min.js"></script>
+	<script src="vendor/bootstrap/js/popper.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+	<script src="vendor/select2/select2.min.js"></script>
+	<script src="vendor/daterangepicker/moment.min.js"></script>
+	<script src="vendor/daterangepicker/daterangepicker.js"></script>
+	<script src="vendor/countdowntime/countdowntime.js"></script>
+	<script src="js/main.js"></script>
+	<script>
+		function fn_chat_toggle() {
+			$(".panel-whole-body").slideToggle();
+		}
+	</script>
+</head>
+
+<body>
+	<nav class="navbar navbar-inverse navbar-fixed-top">
+		<div class="container-fluid">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand" href="#">ITKey Education</a>
+			</div>
+			<div class="collapse navbar-collapse" id="myNavbar">
+				<ul class="nav navbar-nav navbar-right navbar-logout">
+					<li class="login-img"><img src="images/noImage.png" class="img-circle img-loginer" style="width: 35px; height: 35px;"></li>
+					<li>
+						<h5 class="h5-nav">
+							<u>ekangmin85</u><font style="color : #cacaca"> 님 안녕하세요.</font>
+						</h5>
+					</li>
+					<li><a href="#"><i class="fas fa-sign-out-alt"></i> 로그아웃</a></li>
+				</ul>
+
+				<ul class="nav navbar-nav navbar-right navbar-login">
+					<li class="li-login"><input type="text" class="form-control nav-login" id="" placeholder="로그인 아이디"></li>
+					<li class="li-login"><input type="text" class="form-control nav-login" id="" placeholder="비밀번호"></li>
+					<li><a href="#"><i class="fas fa-sign-in-alt"></i> 로그인</a></li>
+					<li><a href="#" data-toggle="modal" data-target="#joinModal"><i class="fas fa-user-plus"></i> 회원가입</a></li>
+				</ul>
+			</div>
+		</div>
+	</nav>
+
+	<div class="limiter iframe-before-login">
+		<div class="container-login100">
+			<div class="wrap-login100 warp-iframe">
+				<div class="login100-form">
+					<div class="row">
+						<div class="col-sm-12 col-sm-iframe">
+							<iframe src="http://support.itkey.co.kr" width="100%" height="750px"></iframe>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="limiter table-after-login">
+		<div class="container-login100">
+			<div class="wrap-login100">
+				<div class="login100-form">
+					<div class="row panel-row">
+						<div class="col-sm-3">
+							<div class="overview-div">
+								<h5 class="overview-title">총 게시글 수</h5>
+								<h1 class="overview-content">242</h1>
+								<i class="far fa-file-alt"></i>
+							</div>
+						</div>
+						<div class="col-sm-3">
+							<div class="overview-div">
+								<h5 class="overview-title">총 가입자 수</h5>
+								<h1 class="overview-content">242</h1>
+								<i class="fas fa-users"></i>
+							</div>
+						</div>
+						<div class="col-sm-3">
+							<div class="overview-div">
+								<h5 class="overview-title">오늘 게시글 수</h5>
+								<h1 class="overview-content">242</h1>
+								<i class="fas fa-file-alt"></i>
+							</div>
+						</div>
+						<div class="col-sm-3">
+							<div class="overview-div">
+								<h5 class="overview-title">오늘 가입자 수</h5>
+								<h1 class="overview-content">242</h1>
+								<i class="fas fa-user-circle"></i>
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-sm-4"><button type="button" class="btn btn-default" data-toggle="modal" data-target="#writeModal"><i class="fas fa-plus"></i> 새글 추가</button></div>
+						<div class="col-sm-2"></div>
+						<div class="col-sm-2"><select class="form-control" id="">
+								<option>전체</option>
+								<option>작성자</option>
+								<option>글내용</option>
+							</select>
+						</div>
+						<div class="col-sm-3"><input type="text" class="form-control" id="" placeholder="문자열을 입력해주세요."></div>
+						<div class="col-sm-1 text-right"><button type="button" class="btn btn-default btn-full"><i class="fas fa-search"></i> 검색</button></div>
+					</div>
+					<div class="row">
+						<div class="col-sm-12">
+							<table class="table table-hover">
+								<thead>
+									<tr>
+										<th style="width : 7%;">순번</th>
+										<th style="width : 9%;">작성자</th>
+										<th style="width : 5%;">공개</th>
+										<th>제목</th>
+										<th style="width : 10%;">작성일자</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<td>1</td>
+										<td>테스트</td>
+										<td><i class="fas fa-lock"></i></td>
+										<td><a href="javascript:void(0);" data-toggle="modal" data-target="#modiModal">하이하이</a></td>
+										<td>2019-10-13</td>
+									</tr>
+									<tr>
+										<td>1</td>
+										<td>테스트</td>
+										<td><i class="fas fa-lock"></i></td>
+										<td><a href="javascript:void(0);" data-toggle="modal" data-target="#modiModal">하이하이</a></td>
+										<td>2019-10-13</td>
+									</tr>
+									<tr>
+										<td>1</td>
+										<td>테스트</td>
+										<td><i class="fas fa-lock-open"></i></td>
+										<td><a href="javascript:void(0);" data-toggle="modal" data-target="#modiModal">하이하이</a></td>
+										<td>2019-10-13</td>
+									</tr>
+									<tr>
+										<td>1</td>
+										<td>테스트</td>
+										<td><i class="fas fa-lock-open"></i></td>
+										<td><a href="javascript:void(0);" data-toggle="modal" data-target="#modiModal">하이하이</a></td>
+										<td>2019-10-13</td>
+									</tr>
+									<tr>
+										<td>1</td>
+										<td>테스트</td>
+										<td><i class="fas fa-lock"></i></td>
+										<td><a href="javascript:void(0);" data-toggle="modal" data-target="#modiModal">하이하이</a></td>
+										<td>2019-10-13</td>
+									</tr>
+									<tr>
+										<td>1</td>
+										<td>테스트</td>
+										<td><i class="fas fa-lock"></i></td>
+										<td><a href="javascript:void(0);" data-toggle="modal" data-target="#modiModal">하이하이</a></td>
+										<td>2019-10-13</td>
+									</tr>
+									<tr>
+										<td>1</td>
+										<td>테스트</td>
+										<td><i class="fas fa-lock"></i></td>
+										<td><a href="javascript:void(0);" data-toggle="modal" data-target="#modiModal">하이하이</a></td>
+										<td>2019-10-13</td>
+									</tr>
+									<tr>
+										<td>1</td>
+										<td>테스트</td>
+										<td><i class="fas fa-lock"></i></td>
+										<td><a href="javascript:void(0);" data-toggle="modal" data-target="#modiModal">하이하이</a></td>
+										<td>2019-10-13</td>
+									</tr>
+									<tr>
+										<td>1</td>
+										<td>테스트</td>
+										<td><i class="fas fa-lock"></i></td>
+										<td><a href="javascript:void(0);" data-toggle="modal" data-target="#modiModal">하이하이</a></td>
+										<td>2019-10-13</td>
+									</tr>
+									<tr>
+										<td>1</td>
+										<td>테스트</td>
+										<td><i class="fas fa-lock"></i></td>
+										<td><a href="javascript:void(0);" data-toggle="modal" data-target="#modiModal">하이하이</a></td>
+										<td>2019-10-13</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-sm-12 text-center">
+							<ul class="pagination">
+								<li><a href="#">이전</a></li>
+								<li class="active"><a href="#">1</a></li>
+								<li><a href="#">2</a></li>
+								<li><a href="#">3</a></li>
+								<li><a href="#">4</a></li>
+								<li><a href="#">5</a></li>
+								<li><a href="#">6</a></li>
+								<li><a href="#">7</a></li>
+								<li><a href="#">8</a></li>
+								<li><a href="#">9</a></li>
+								<li><a href="#">10</a></li>
+								<li><a href="#">다음</a></li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="container">
+		<div class="row chat-window col-xs-5 col-md-3" id="chat_window_1" style="margin-left:10px;">
+			<div class="col-xs-12 col-md-12">
+				<div class="panel panel-default">
+					<div class="panel-heading top-bar">
+						<div class="col-md-8 col-xs-8">
+							<h3 class="panel-title"><i class="fas fa-comments"></i> ITKey 전체 채팅</h3>
+						</div>
+						<div class="col-md-4 col-xs-4" style="text-align: right;">
+							<a href="javascript:void(0);" onclick="fn_chat_toggle();"><i class="fas fa-window-minimize" style="color : white"></i></a>
+						</div>
+					</div>
+				</div>
+				<div class="panel-whole-body" style="display: none;">
+					<div class="panel-body msg_container_base">
+						<div class="row msg_container base_sent">
+							<div class="col-md-10 col-xs-10">
+								<div class="messages msg_sent">
+									<p>내가 보낸 내용입니다.</p>
+									<time datetime="2009-11-13T20:00">2019-06-24 13:22</time>
+								</div>
+							</div>
+							<div class="col-md-2 col-xs-2 avatar">
+								<img src="http://www.bitrebels.com/wp-content/uploads/2011/02/Original-Facebook-Geek-Profile-Avatar-1.jpg" class=" img-responsive ">
+							</div>
+						</div>
+						<div class="row msg_container base_receive">
+							<div class="col-md-2 col-xs-2 avatar">
+								<img src="http://www.bitrebels.com/wp-content/uploads/2011/02/Original-Facebook-Geek-Profile-Avatar-1.jpg" class=" img-responsive ">
+							</div>
+							<div class="col-md-10 col-xs-10">
+								<div class="messages msg_receive">
+									<p>다른사람이 보낸 내용입니다.</p>
+									<time datetime="2009-11-13T20:00">2019-06-24 13:22</time>
+								</div>
+							</div>
+						</div>
+
+					</div>
+					<div class="panel-footer">
+						<div class="input-group">
+							<input id="btn-input" type="text" class="form-control input-sm chat_input" placeholder="Write your message here..." />
+							<span class="input-group-btn">
+								<button class="btn btn-default btn-sm" id="btn-chat">보내기</button>
+							</span>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	</div>
+	<div class="btn-group dropup">
+		<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+			<span class="glyphicon glyphicon-cog"></span>
+			<span class="sr-only">Toggle Dropdown</span>
+		</button>
+		<ul class="dropdown-menu" role="menu">
+			<li><a href="#" id="new_chat"><span class="glyphicon glyphicon-plus"></span> Novo</a></li>
+			<li><a href="#"><span class="glyphicon glyphicon-list"></span> Ver outras</a></li>
+			<li><a href="#"><span class="glyphicon glyphicon-remove"></span> Fechar Tudo</a></li>
+			<li class="divider"></li>
+			<li><a href="#"><span class="glyphicon glyphicon-eye-close"></span> Invisivel</a></li>
+		</ul>
+	</div>
+	<!--Join Modal -->
+	<div class="modal fade" id="joinModal" role="dialog">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+					<h4 class="modal-title">회원가입</h4>
+				</div>
+				<div class="modal-body">
+					<div class="row">
+						<div class="col-sm-12">
+							<img src="images/noImage.png" class="img-circle" style="width: 140px; height: 140px; display : block; margin-left : auto; margin-right: auto;">
+						</div>
+					</div>
+					<div class="form-group" style="margin-bottom : 50px; margin-top : 10px;">
+						<div class="input-group">
+							<input type="text" class="form-control" readonly>
+							<div class="input-group-btn">
+								<span class="fileUpload btn login100-form-btn login-file-btn">
+									<span class="upl" id="upload">업로드</span>
+									<input type="file" class="upload up" id="up" onchange="readURL(this);" />
+								</span><!-- btn-orange -->
+							</div><!-- btn -->
+						</div><!-- group -->
+					</div><!-- form-group -->
+
+					<div class="row">
+						<div class="col-sm-6">
+							<div class="wrap-input100 validate-input" data-validate="Enter username">
+								<input class="input100" type="text" name="username" placeholder="ID">
+								<span class="focus-input100" data-placeholder="&#xf207;"></span>
+							</div>
+						</div>
+						<div class="col-sm-6">
+							<div class="wrap-input100 validate-input" data-validate="Enter password">
+								<input class="input100" type="password" name="pass" placeholder="Password">
+								<span class="focus-input100" data-placeholder="&#xf191;"></span>
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-sm-6">
+							<div class="wrap-input100 validate-input" data-validate="Enter username">
+								<input class="input100" type="text" name="username" placeholder="이름 입력란">
+								<span class="focus-input100" data-placeholder="&#xf205;"></span>
+							</div>
+						</div>
+						<div class="col-sm-6">
+							<div class="wrap-input100 validate-input" data-validate="Enter username">
+								<input class="input100" type="text" name="username" placeholder="전화번호 입력란">
+								<span class="focus-input100" data-placeholder="&#xf2be;"></span>
+							</div>
+						</div>
+					</div>
+					<div class="wrap-input100 validate-input" data-validate="Enter username">
+						<input class="input100" type="text" name="username" placeholder="이메일을 입력해주세요.">
+						<span class="focus-input100" data-placeholder="&#xf15a;"></span>
+					</div>
+
+					<div class="wrap-input100 validate-input" data-validate="Enter username">
+						<input class="input100" type="text" name="username" placeholder="이메일을 다시한번 입력해주세요.">
+						<span class="focus-input100" data-placeholder="&#xf159;"></span>
+					</div>
+
+					<div class="container-login100-form-btn">
+						<a href="" class="login100-form-btn animsition-link">가입</a>
+						<a href="" data-dismiss="modal" class="login100-form-btn animsition-link">취소</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!--//Join Modal -->
+
+	<!--Write Modal -->
+	<div class="modal fade" id="writeModal" role="dialog">
+		<div class="modal-dialog modal-lg">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+					<h4 class="modal-title"><i class="fa fa-paper-plane" style="color: #b224ef;"></i> 새글 추가/수정</h4>
+				</div>
+				<div class="modal-body">
+					<div class="row">
+						<div class="col-sm-12">
+							<table class="table table-bordered">
+								<tbody>
+									<tr>
+										<th>제목</th>
+										<td colspan="3" class="input-td"><input type="text" class="form-control input-sm" placeholder="제목을 입력해 주세요."></td>
+									</tr>
+									<tr>
+										<th>작성자</th>
+										<td>이강민</td>
+										<th>작성일자</th>
+										<td>2019-06-17</td>
+									</tr>
+									<tr>
+										<td class="input-td" colspan="4">
+											<textarea class="form-control" style="resize: none;" rows="15" id="comment" placeholder="내용을 입력해 주세요."></textarea>
+										</td>
+									</tr>
+									<tr>
+										<th>첨부파일</th>
+										<td colspan="3">
+											<input type="file" id="input-file-now" class="file-upload" />
+										</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-sm-2"><button class="btn btn-default btn-full">저장</button></div>
+						<div class="col-sm-8"></div>
+						<div class="col-sm-2"><button class="btn btn-default btn-full" data-dismiss="modal">닫기</button></div>
+					</div>
+				</div>
+
+			</div>
+		</div>
+	</div>
+	<!--//Write Modal -->
+
+	<!--modify Modal -->
+	<div class="modal fade" id="modiModal" role="dialog">
+		<div class="modal-dialog modal-lg">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+					<h4 class="modal-title"><i class="fa fa-paper-plane" style="color: #b224ef;"></i> 글 상세 정보</h4>
+				</div>
+				<div class="modal-body">
+					<div class="row">
+						<div class="col-sm-2 col-header">
+							<div class="well well-sm"><i class="fas fa-chevron-up"></i> 이전글</div>
+						</div>
+						<div class="col-sm-8 col-mid">
+							<div class="well well-sm"><button class="btn btn-link">이전 글 제목입니다.</button></a></div>
+						</div>
+						<div class="col-sm-2 col-footer">
+							<div class="well well-sm">2019-10-13</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-sm-12">
+							<table class="table table-bordered">
+								<tbody>
+									<tr>
+										<th>제목</th>
+										<td>제목입니다.</td>
+										<th>조회수</th>
+										<td>제목입니다.</td>
+									</tr>
+									<tr>
+										<th>작성자</th>
+										<td>제목입니다.</td>
+										<th>작성일자</th>
+										<td>제목입니다.</td>
+									</tr>
+									<tr>
+										<td colspan="4">
+											<div class="detail-content"></div>
+										</td>
+									</tr>
+									<tr>
+										<th>첨부파일</th>
+										<td colspan="3"></td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-sm-2 col-header">
+							<div class="well well-sm"><i class="fas fa-chevron-down"></i> 다음글</div>
+						</div>
+						<div class="col-sm-8 col-mid">
+							<div class="well well-sm"><button class="btn btn-link">다음 글 제목입니다.</button></a></div>
+						</div>
+						<div class="col-sm-2 col-footer">
+							<div class="well well-sm">2019-10-13</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-sm-2"><button class="btn btn-default btn-full">수정</button></div>
+						<div class="col-sm-2"><button class="btn btn-default btn-full">삭제</button></div>
+						<div class="col-sm-6"></div>
+						<div class="col-sm-2"><button class="btn btn-default btn-full" data-dismiss="modal">닫기</button></div>
+					</div>
+				</div>
+			</div>
+			<!--//modify Modal -->
+</body></html>
